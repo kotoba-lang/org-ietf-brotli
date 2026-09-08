@@ -9,7 +9,7 @@
    them uses it — which is why the data lives in `brotli.data`, generated from
    the RFC and checked against the CRC-32 the RFC publishes for it."
   (:require [brotli.data :as data]
-            [clojure.string :as str]))
+            [kotoba.lang.text :as str]))
 
 ;; ---------------------------------------------------------------------------
 ;; The dictionary bytes
