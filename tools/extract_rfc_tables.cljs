@@ -16,7 +16,7 @@
 
    The CRC-32 used for verification is this workspace's own
    `deflate.core/crc32`, which is itself checked against java.util.zip."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [deflate.core :as deflate]))
 
 (def fs (js/require "node:fs"))
