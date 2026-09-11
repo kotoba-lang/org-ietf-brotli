@@ -45,7 +45,7 @@ is `org-ietf-deflate` (gzip). Also absent: streaming (whole-buffer only,
 ## Where the tables come from
 
 The dictionary, the transformations and the three context-ID lookup tables are
-**generated from the text of RFC 7932** by `tools/extract_rfc_tables.cljs`, and
+**generated from the text of RFC 7932** by `tools/extract_rfc_tables.cljk`, and
 every one of them is verified against the check value the RFC publishes for it:
 
 | table | size | CRC-32 |
@@ -56,7 +56,7 @@ every one of them is verified against the check value the RFC publishes for it:
 
 ```sh
 curl -sL https://www.rfc-editor.org/rfc/rfc7932.txt -o /tmp/rfc7932.txt
-nbb --classpath ../org-ietf-deflate/src tools/extract_rfc_tables.cljs /tmp/rfc7932.txt
+nbb --classpath ../org-ietf-deflate/src tools/extract_rfc_tables.cljk /tmp/rfc7932.txt
 ```
 
 That is not ceremony. Three bugs in this workspace's zstd decoder were
@@ -66,14 +66,14 @@ verbatim, so transform 22's suffix was the two characters `\` and `n` instead of
 one newline — which corrupted exactly one byte per dictionary reference, on
 inputs above ~76 KB, at high qualities only.
 
-`src/brotli/data.cljc` is generated (169 KB, the dictionary as base64) and should
+`src/brotli/data.cljk` is generated (169 KB, the dictionary as base64) and should
 never be hand-edited.
 
 ## Test
 
 ```sh
 clojure -M:test          # JVM: portable suite + conformance against the brotli CLI
-nbb run-tests.cljs       # ClojureScript: the same decoder, recorded fixtures
+nbb run-tests.cljk       # ClojureScript: the same decoder, recorded fixtures
 clojure -M:lint
 ```
 

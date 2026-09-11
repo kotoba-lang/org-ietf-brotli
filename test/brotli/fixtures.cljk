@@ -5,7 +5,7 @@
 
    Regenerate with the reference encoder if you add cases; do not hand-edit.
    Larger and broader fixtures are generated on the fly by
-   `test/brotli/oracle_test.clj`.")
+   `test/brotli/oracle_test.cljk`.")
 
 (def cases
   [{:name "text" :quality 0
