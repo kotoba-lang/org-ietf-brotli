@@ -7,16 +7,16 @@ transcription).
 ## Invariants
 
 - **No host codec.** No node `zlib.brotli*`, no npm binding, no JNI. The
-  reference `brotli` binary appears in `test/brotli/oracle_test.clj` only, as an
+  reference `brotli` binary appears in `test/brotli/oracle_test.cljk` only, as an
   oracle.
-- **`src/brotli/data.cljc` is generated.** Never hand-edit it. Regenerate with
-  `tools/extract_rfc_tables.cljs`, which refuses to write unless all five tables
+- **`src/brotli/data.cljk` is generated.** Never hand-edit it. Regenerate with
+  `tools/extract_rfc_tables.cljk`, which refuses to write unless all five tables
   match the CRC-32 values the RFC publishes.
 - **Decoding only.** Do not add an encoder. Brotli is deliberately
   expensive-to-encode; the compressing path in this workspace is
   `org-ietf-deflate`.
 - **Every failure is an `ex-info` with `:reason`.**
-- **Both runtimes are gated** (`clojure -M:test`, `nbb run-tests.cljs`). The
+- **Both runtimes are gated** (`clojure -M:test`, `nbb run-tests.cljk`). The
   122,784-byte dictionary is base64 in the source and decoded with
   `java.util.Base64` / `js/atob`; keep both paths working.
 
@@ -60,4 +60,4 @@ transcription).
 | `brotli.dictionary` | dictionary words, the 21 elementary transforms, `word-for-distance` |
 | `brotli.data` | **generated**: dictionary (base64), transformations, context LUTs |
 | `brotli.bits` | forward LSB-first bit reader |
-| `tools/extract_rfc_tables.cljs` | regenerates `brotli.data` from the RFC text, CRC-verified |
+| `tools/extract_rfc_tables.cljk` | regenerates `brotli.data` from the RFC text, CRC-verified |
