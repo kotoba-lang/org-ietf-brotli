@@ -1,5 +1,5 @@
 (ns run-tests
-  "Runs the runtime-agnostic suite on ClojureScript via nbb: `nbb run-tests.cljk`.
+  "Runs the runtime-agnostic suite on ClojureScript via nbb: `kbb --backend sci run-tests.cljk`.
 
    The JVM suite adds the wide conformance sweep against the reference `brotli`
    CLI; this one proves the same .cljc — including the 122,784-byte dictionary and
