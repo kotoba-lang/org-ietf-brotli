@@ -1,6 +1,6 @@
 (ns brotli.portable-test
   "Runtime-agnostic suite: no shell, no reference binary. Runs under
-   `clojure -M:test` and `nbb run-tests.cljk`.
+   `kbb -M:test` and `kbb --backend sci run-tests.cljk`.
 
    Real compressed streams still come from the reference encoder — a decoder can
    only be checked against data somebody else produced — but here they are

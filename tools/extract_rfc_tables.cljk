@@ -1,4 +1,4 @@
-#!/usr/bin/env nbb
+#!/usr/bin/env kbb
 (ns extract-rfc-tables
   "Generates `src/brotli/data.cljk` from the text of RFC 7932.
 
@@ -12,7 +12,7 @@
 
    Usage:
      curl -sL https://www.rfc-editor.org/rfc/rfc7932.txt -o /tmp/rfc7932.txt
-     nbb --classpath ../org-ietf-deflate/src tools/extract_rfc_tables.cljk /tmp/rfc7932.txt
+     kbb --backend sci --classpath ../org-ietf-deflate/src tools/extract_rfc_tables.cljk /tmp/rfc7932.txt
 
    The CRC-32 used for verification is this workspace's own
    `deflate.core/crc32`, which is itself checked against java.util.zip."

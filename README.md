@@ -56,7 +56,7 @@ every one of them is verified against the check value the RFC publishes for it:
 
 ```sh
 curl -sL https://www.rfc-editor.org/rfc/rfc7932.txt -o /tmp/rfc7932.txt
-nbb --classpath ../org-ietf-deflate/src tools/extract_rfc_tables.cljk /tmp/rfc7932.txt
+kbb --backend sci --classpath ../org-ietf-deflate/src tools/extract_rfc_tables.cljk /tmp/rfc7932.txt
 ```
 
 That is not ceremony. Three bugs in this workspace's zstd decoder were
@@ -72,9 +72,9 @@ never be hand-edited.
 ## Test
 
 ```sh
-clojure -M:test          # JVM: portable suite + conformance against the brotli CLI
-nbb run-tests.cljk       # ClojureScript: the same decoder, recorded fixtures
-clojure -M:lint
+kbb -M:test          # JVM: portable suite + conformance against the brotli CLI
+kbb --backend sci run-tests.cljk       # ClojureScript: the same decoder, recorded fixtures
+kbb -M:lint
 ```
 
 The JVM suite drives the reference `brotli` binary across qualities 0/1/2/5/9/11

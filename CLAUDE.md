@@ -16,7 +16,7 @@ transcription).
   expensive-to-encode; the compressing path in this workspace is
   `org-ietf-deflate`.
 - **Every failure is an `ex-info` with `:reason`.**
-- **Both runtimes are gated** (`clojure -M:test`, `nbb run-tests.cljk`). The
+- **Both runtimes are gated** (`kbb -M:test`, `kbb --backend sci run-tests.cljk`). The
   122,784-byte dictionary is base64 in the source and decoded with
   `java.util.Base64` / `js/atob`; keep both paths working.
 
