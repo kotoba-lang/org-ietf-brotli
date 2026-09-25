@@ -7,7 +7,7 @@
    *recorded* in `brotli.fixtures` rather than generated, so the same decode paths
    are exercised on a runtime with no shell. The broad sweep across every quality
    and window size is in `brotli.oracle-test`."
-  (:require [brotli.core :as brotli]
+  (:require [kotoba.bytes :as kbytes] [brotli.core :as brotli]
             [brotli.data :as data]
             [brotli.dictionary :as dict]
             [brotli.fixtures :as fixtures]
@@ -16,7 +16,7 @@
 
 (defn- b64->bytes [s]
   #?(:clj (mapv #(bit-and (int %) 0xff)
-                (.decode (java.util.Base64/getDecoder) ^String s))
+                (kbytes/base64-decode-bytes ^String s))
      :cljs (let [d (js/atob s)]
              (vec (map-indexed (fn [i _] (.charCodeAt d i)) (repeat (.-length d) nil))))))
 
