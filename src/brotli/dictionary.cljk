@@ -8,7 +8,7 @@
    A decoder without this table cannot read real streams — almost every one of
    them uses it — which is why the data lives in `brotli.data`, generated from
    the RFC and checked against the CRC-32 the RFC publishes for it."
-  (:require [brotli.data :as data]
+  (:require [kotoba.bytes :as kbytes] [brotli.data :as data]
             [kotoba.lang.text :as str]))
 
 ;; ---------------------------------------------------------------------------
@@ -16,7 +16,7 @@
 ;; ---------------------------------------------------------------------------
 
 (def ^:private dict
-  #?(:clj (let [ba (.decode (java.util.Base64/getDecoder) ^String data/dictionary-base64)]
+  #?(:clj (let [ba (kbytes/base64-decode-bytes ^String data/dictionary-base64)]
             (mapv #(bit-and (int %) 0xff) ba))
      :cljs (let [s (js/atob data/dictionary-base64)]
              (vec (map-indexed (fn [i _] (.charCodeAt s i)) (repeat (.-length s) nil))))))
