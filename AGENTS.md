@@ -1,4 +1,4 @@
-# CLAUDE.md — org-ietf-brotli
+# AGENTS.md — org-ietf-brotli
 
 Brotli decoding (RFC 7932) in portable `.cljc`. Zero dependencies in `src/`;
 `org-ietf-deflate` appears only in `tools/` (for the CRC-32 that verifies the RFC
